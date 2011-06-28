@@ -1,0 +1,14 @@
+This is a modified version of JQuery Mobile to support use of Widgets in Safari inside an iFrame. 
+
+It replaces the function:
+
+	window.history.back()
+
+... with:
+
+	var url = $.mobile.urlHistory.getPrev().url;
+	if (url === null || url == "") url = $.mobile.firstPage.attr("data-url");
+	url = "#" + url;
+	$.mobile.changePage(url, "slide", true, true, true);
+
+See https://github.com/jquery/jquery-mobile/issues/560
